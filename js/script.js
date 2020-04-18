@@ -43,7 +43,7 @@ function showChartOfTotalCase(val, res){
         data: {
             labels: JSON.parse(val),
             datasets: [{
-                label: 'Bangladesh COVID-19 case',
+                label: 'total case',
                 borderColor: 'rgb(55, 61, 240)',
                 backgroundColor: 'rgba(255,255, 255, 0.1)',
                 data: res
@@ -61,7 +61,7 @@ function showChartOfTotalDeath(date, count){
         data: {
             labels: JSON.parse(date),
             datasets: [{
-                label: 'Bangladesh COVID-19 death count',
+                label: 'total death',
                 borderColor: 'rgb(184, 40, 40)',
                 backgroundColor: 'rgba(255,255, 255, 0.1)',
                 data: count
@@ -78,14 +78,10 @@ function showChartOfDailyCase(date, count){
         data: {
             labels: JSON.parse(date),
             datasets: [{
-                label: '# of Votes',
+                label: 'daily new case',
                 data: count,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(184, 40, 40, 0.1)'
-                ],
+                backgroundColor: 'rgb(55, 61, 240)',
+                borderColor: 'rgb(55, 61, 240)',
                 borderWidth: 5
             }]
         },
@@ -108,14 +104,10 @@ function showChartOfDailyDeath(date, count){
         data: {
             labels: JSON.parse(date),
             datasets: [{
-                label: '# of Votes',
+                label: 'daily new death',
                 data: count,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(184, 40, 40, 0.1)'
-                ],
+                backgroundColor: 'rgb(184, 40, 40)',
+                borderColor: 'rgb(184, 40, 40)',
                 borderWidth: 5
             }]
         },
