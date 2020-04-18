@@ -20,17 +20,23 @@ fetch('https://api.thevirustracker.com/free-api?countryTimeline=BD')
     var allDate= Object.keys(data.timelineitems[0]);
     var value_total_cases =[];
     var value_total_death =[];
+    var value_new_cases =[];
+    var value_new_death =[];
     for (let index = 0; index < ((allDate).length)-1; index++) {
-        value_total_cases.push(data.timelineitems[0][allDate[index]].new_daily_cases);
-        value_total_death.push(data.timelineitems[0][allDate[index]].new_daily_deaths);
+        value_total_cases.push(data.timelineitems[0][allDate[index]].total_cases);
+        value_total_death.push(data.timelineitems[0][allDate[index]].total_deaths);
+        value_new_cases.push(data.timelineitems[0][allDate[index]].new_daily_cases);
+        value_new_death.push(data.timelineitems[0][allDate[index]].new_daily_deaths);
     }
     
-    showChart(JSON.stringify(allDate), value_total_cases);
+    showChartOfTotalCase(JSON.stringify(allDate), value_total_cases);
     showChartOfTotalDeath(JSON.stringify(allDate), value_total_death);
+    showChartOfDailyCase(JSON.stringify(allDate), value_new_cases);
+    showChartOfDailyDeath(JSON.stringify(allDate), value_new_death);
 })
 
 //chart display of total cases
-function showChart(val, res){
+function showChartOfTotalCase(val, res){
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         type: 'line',
@@ -62,6 +68,66 @@ function showChartOfTotalDeath(date, count){
             }]
         },
         options: {}
+    });
+}
+
+function showChartOfDailyCase(date, count){
+    var ctx = document.getElementById('dailyCase').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: JSON.parse(date),
+            datasets: [{
+                label: '# of Votes',
+                data: count,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(184, 40, 40, 0.1)'
+                ],
+                borderWidth: 5
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}
+
+function showChartOfDailyDeath(date, count){
+    var ctx = document.getElementById('dailyDeath').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: JSON.parse(date),
+            datasets: [{
+                label: '# of Votes',
+                data: count,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(184, 40, 40, 0.1)'
+                ],
+                borderWidth: 5
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
     });
 }
 
