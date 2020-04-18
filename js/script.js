@@ -17,20 +17,20 @@ fetch('https://api.thevirustracker.com/free-api?countryTotal=BD')
 fetch('https://api.thevirustracker.com/free-api?countryTimeline=BD')
 .then(res => res.json())
 .then(data => {
-    var x= Object.keys(data.timelineitems[0]);
-    var value =[];
-    for (let index = 0; index < (Object.keys(data.timelineitems[0]).length)-1; index++) {
-        value.push(data.timelineitems[0][x[index]].total_cases);
+    var allDate= Object.keys(data.timelineitems[0]);
+    var value_total_cases =[];
+    var value_total_death =[];
+    for (let index = 0; index < ((allDate).length)-1; index++) {
+        value_total_cases.push(data.timelineitems[0][allDate[index]].total_cases);
+        value_total_death.push(data.timelineitems[0][allDate[index]].total_deaths);
     }
-    console.log(value);
     
-    showChart(JSON.stringify(Object.keys(data.timelineitems[0])), value)
+    showChart(JSON.stringify(allDate), value_total_cases);
+    showChartOfTotalDeath(JSON.stringify(allDate), value_total_death);
 })
 
-//chart display
+//chart display of total cases
 function showChart(val, res){
-    console.log(JSON.parse(val));
-    console.log(res);
     var ctx = document.getElementById('myChart').getContext('2d');
     var chart = new Chart(ctx, {
         type: 'line',
@@ -38,8 +38,27 @@ function showChart(val, res){
             labels: JSON.parse(val),
             datasets: [{
                 label: 'Bangladesh COVID-19 case',
-                borderColor: 'rgb(0, 0, 0)',
+                borderColor: 'rgb(55, 61, 240)',
+                backgroundColor: 'rgba(255,255, 255, 0.1)',
                 data: res
+            }]
+        },
+        options: {}
+    });
+}
+
+//chart display of total death
+function showChartOfTotalDeath(date, count){
+    var ctx = document.getElementById('deathCountChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: JSON.parse(date),
+            datasets: [{
+                label: 'Bangladesh COVID-19 death count',
+                borderColor: 'rgb(184, 40, 40)',
+                backgroundColor: 'rgba(255,255, 255, 0.1)',
+                data: count
             }]
         },
         options: {}
