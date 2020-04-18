@@ -1,9 +1,0 @@
-https://thevirustracker.com/timeline/map-data.json
-
-https://api.thevirustracker.com/free-api?countryTotals=BD
-
-https://api.thevirustracker.com/free-api?global=stats
-
-https://api.thevirustracker.com/free-api?countryTotal=BD
-
-https://api.thevirustracker.com/free-api?countryTimeline=BD
