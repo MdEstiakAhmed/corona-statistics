@@ -1,0 +1,52 @@
+/* bangladesh today statistic section start */
+.bd-today-info{
+
+}
+
+.bd-today-header{
+	text-transform: capitalize;
+	font-size: 52px;
+	font-weight: 600;
+}
+
+.bd-today{
+	border-radius: 7px;
+	box-shadow: 3px 3px 9px 1px #00000021;
+}
+
+.bd-today h2{
+	text-transform: capitalize;
+	margin-bottom: 0;
+	font-size: 35px;
+	color: black;
+}
+
+.bd-today h1{
+	text-transform: capitalize;
+	margin-bottom: 0;
+	font-size: 70px;
+}
+
+.today-cases{
+
+}
+
+.today-death{
+
+}
+
+@media(max-width:576px){
+	.bd-today{
+		margin-bottom: 30px;
+		padding-top: 20px !important;
+		padding-bottom: 20px !important;
+	}
+	.bd-today-header{
+		margin-top: 0 !important;
+	}
+}
+/* bangladesh today statistic section end */
+
+/* bangladesh total statistic section start */
+
+/* bangladesh total statistic section end */
