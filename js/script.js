@@ -21,8 +21,8 @@ fetch('https://api.thevirustracker.com/free-api?countryTimeline=BD')
     var value_total_cases =[];
     var value_total_death =[];
     for (let index = 0; index < ((allDate).length)-1; index++) {
-        value_total_cases.push(data.timelineitems[0][allDate[index]].total_cases);
-        value_total_death.push(data.timelineitems[0][allDate[index]].total_deaths);
+        value_total_cases.push(data.timelineitems[0][allDate[index]].new_daily_cases);
+        value_total_death.push(data.timelineitems[0][allDate[index]].new_daily_deaths);
     }
     
     showChart(JSON.stringify(allDate), value_total_cases);
